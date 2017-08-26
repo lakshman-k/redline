@@ -21,7 +21,7 @@
   <div class="container">
 
     <form class="well form-horizontal" action="bregister.php" method="post"  id="contact_form">
-<fieldset class="col-md-4 col-lg-12">
+<fieldset>
 
 <!-- Form Name -->
 <legend>Register with Us Today!</legend>
@@ -73,9 +73,13 @@ div.tab button.active {
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
 <div class="tab">
-  <button class="tablinks" onclick="location.reload();location.href='index.html'">Donor</button>
+<button class="tablinks"><a  href="index.html">Donor</a></button>
+<button class="tablinks"><a  href="hospital.html">Hospital</a></button>
+<button class="tablinks"><a  href="blood_bank.html">Blood Bank</a></button>
+
+<!--  <button class="tablinks" onclick="location.reload();location.href='index.html'">Donor</button>
   <button class="tablinks" onclick="location.reload();location.href='hospital.html'">Hospital</button>
-  <button class="tablinks" onclick="location.reload();location.href='blood_bank.html'">Blood Bank</button>
+  <button class="tablinks" onclick="location.reload();location.href='blood_bank.html'">Blood Bank</button>-->
 </div>
 </div>
   </div>
@@ -104,12 +108,20 @@ function open(type) {
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="name" placeholder="Name" class="form-control"  type="text">
+  <input   class="form-control" required  name="name" placeholder="Name" class="form-control"  type="text">
     </div>
   </div>
 </div>
 
-
+<div class="form-group">
+  <label class="col-md-4 control-label">User Name</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input   class="form-control" required  name="uname" placeholder="User Name" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
 
 
 
@@ -120,7 +132,7 @@ function open(type) {
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input name="mobile" placeholder="999999999" class="form-control" type="text">
+  <input  class="form-control" required name="mobile" placeholder="Enter mobile number" class="form-control" type="number">
     </div>
   </div>
 </div>
@@ -131,7 +143,7 @@ function open(type) {
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
-  <input name="pin" placeholder="Password" class="form-control" type="password">
+  <input  class="form-control" required  class="form-control" required  name="pin" placeholder="Password" class="form-control" type="password">
     </div>
   </div>
 </div>
@@ -178,7 +190,7 @@ function open(type) {
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="address" placeholder="Home Address " class="form-control" type="text">
+  <input   class="form-control" required class="form-control" required  name="address" placeholder="Address " class="form-control" type="text">
     </div>
   </div>
 </div>
@@ -201,7 +213,7 @@ function open(type) {
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="city" placeholder="city" class="form-control"  type="text">
+  <input   class="form-control" required class="form-control" required  name="city" placeholder="city" class="form-control"  type="text">
     </div>
   </div>
 </div>

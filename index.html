@@ -6,12 +6,13 @@
   <script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
 
 
-  
-  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
-<link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css'>
 
-      <link rel="stylesheet" href="file:///C|/Users/lakshman/Documents/RedLine/css/style.css">
+  <link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet prefetch" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css">
+
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
   
 </head>
@@ -73,9 +74,13 @@ div.tab button.active {
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
 <div class="tab">
-  <button class="tablinks" onclick="location.reload();location.href='index.html'">Donor</button>
+<button class="tablinks"><a  href="index.html">Donor</a></button>
+<button class="tablinks"><a  href="hospital.html">Hospital</a></button>
+<button class="tablinks"><a  href="blood_bank.html">Blood Bank</a></button>
+
+<!--  <button class="tablinks" onclick="location.reload();location.href='index.html'">Donor</button>
   <button class="tablinks" onclick="location.reload();location.href='hospital.html'">Hospital</button>
-  <button class="tablinks" onclick="location.reload();location.href='blood_bank.html'">Blood Bank</button>
+  <button class="tablinks" onclick="location.reload();location.href='blood_bank.html'">Blood Bank</button>-->
 </div>
 </div>
   </div>
@@ -99,11 +104,11 @@ function open(type) {
 -->
 <!-- cpied content over -->
 <div class="form-group">
-  <label class="col-md-4 control-label">Name</label>  
+  <label class="col-md-4 control-label">User Name</label>  
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="name" placeholder="Name" class="form-control"  type="text">
+  <input  class="form-control" required name="name" placeholder="Name" class="form-control"  type="text">
     </div>
   </div>
 </div>
@@ -113,24 +118,28 @@ function open(type) {
 
 
 <!-- Text input-->
-<script type="text/javascript">
-  function minimum()
+<script>
+
+ window.alert("adf");
+  function minimum1()
   {
-    var pass=document.getElementById('mob_no').value.length;
+	 window.alert("adf");
+    var pass=document.getElementById('mobile').value.length;
     if(pass!=10){
       alert("invalid mobile number");
-      document.getElementById('mob_no').value="";
+      document.getElementById('mobile').value="";
     return false;
 }
-    
+     
   
+
 </script>       
 <div class="form-group">
   <label class="col-md-4 control-label">Mobile Number</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
- <input type="number" class="form-control"required name="mobile" id="mob_no"  onchange="minimum()" placeholder="Enter mobile number">
+  <input type="number" class="form-control"required name="mobile" id="mobile"  onChange="minimum1()" placeholder="Enter mobile number">
 
     </div>
   </div>
@@ -142,7 +151,7 @@ function open(type) {
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
-  <input name="pin" placeholder="Password" class="form-control" type="password">
+  <input class="form-control" required name="pin" placeholder="Password" class="form-control" type="password">
     </div>
   </div>
 </div>
@@ -155,8 +164,9 @@ function open(type) {
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="bloodgroup" class="form-control selectpicker" >
-      <option value=" " >Please select Blood Group</option>
+        
+    <select name="bloodgroup" class="form-control selectpicker" required >
+      <option value="" >Please select Blood Group</option>
 							  <option value="A+">A+</option>
 					  <option value="A-">A-</option>
 					  <option value="AB+">AB+</option>
@@ -184,7 +194,7 @@ function open(type) {
         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
           <i class="fa fa-calendar">
          </i>
-  <input type="date" class="form-control"required name="dob" id="DOB" max="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-216 Months',strtotime($d))); ?>" min="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-300Months',strtotime($d))); ?>">
+  <input  type="date" class="form-control"required name="dob" id="DOB" max="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-216 Months',strtotime($d))); ?>" min="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-300Months',strtotime($d))); ?>">
     
     </div>
   </div>
@@ -199,17 +209,28 @@ function open(type) {
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="address" placeholder="Home Address " class="form-control" type="text">
+  <input class="form-control" required name="haddress" placeholder="Home Address " class="form-control" type="text">
     </div>
   </div>
 </div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Home City</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <input class="form-control" required name="hcity" placeholder="Home City" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
 
 <div class="form-group">
   <label class="col-md-4 control-label">Work Address</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="address1" placeholder="Work Address" class="form-control" type="text">
+  <input name="waddress" placeholder="Work Address (optional)" class="form-control" type="text">
     </div>
   </div>
 </div>
@@ -218,11 +239,11 @@ function open(type) {
 <!-- Text input-->
  
 <div class="form-group">
-  <label class="col-md-4 control-label">City</label>  
+  <label class="col-md-4 control-label">Working City</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="city" placeholder="city" class="form-control"  type="text">
+  <input name="wcity" placeholder="Working City (optional)" class="form-control"  type="text">
     </div>
   </div>
 </div>
