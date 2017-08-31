@@ -8,15 +8,16 @@ include("connection.php");
     $pin = $_POST['pin'];
     $bloodgroup = $_POST['bloodgroup'];
     $dob = $_POST['dob'];
-	$haddress = $_POST['address'];
-	$waddress = $_POST['address1'];
-	$city = $_POST['city'];
+	$haddress = $_POST['haddress'];
+	$hcity = $_POST['hcity'];
+	$waddress = $_POST['waddress'];
+	$wcity = $_POST['wcity'];
 	//$Pincode=$_POST['Pincode'];
     
 	
 	try {
-    $sql = "INSERT INTO user_details(name, mobile, pin, bloodgroup, dob,homeaddress,workaddress,city) 
-	VALUES('$name','$mobile','$pin','$bloodgroup','$dob','$haddress','$waddress','$city')";
+    $sql = "INSERT INTO user_details(name, mobile, pin, bloodgroup, dob,haddress,hcity,waddress,wcity) 
+	VALUES('$name','$mobile','$pin','$bloodgroup','$dob','$haddress','$hcity','$waddress','$wcity')";
     
     $sql=mysqli_query($conn,$sql);
 	
@@ -29,7 +30,8 @@ catch(PDOException $e)
 
     if($sql==true)
     {
-        echo "New record created successfully";
+       // echo "New record created successfully";
+	   header("location:login.html");
 		
     }
     else{
