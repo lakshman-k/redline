@@ -19,11 +19,11 @@ include 'header.php';
       <link rel="stylesheet" href="css/style.css">
       <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
-   
+
 </head>
 
 <body>
-  
+
   <div class="container">
 
     <form class="well form-horizontal" action="register.php" method="post"  id="contact_form">
@@ -75,7 +75,7 @@ div.tab button.active {
 }
 </style>
 <div class="form-group">
-  <label class="col-md-4 control-label">Select User Type</label>  
+  <label class="col-md-4 control-label">Select User Type</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
 <div class="tab">
@@ -91,17 +91,17 @@ div.tab button.active {
   </div>
 </div>
 
-<!--  was not working at the time 
+<!--  was not working at the time
 <script>
 function open(type) {
   if (type=='donor'){
 	  window.open("index.html");
-	  
+
   }
 	else if (type=='hospital'){
 		window.open("hospital_register.html")
 	}
-	else 
+	else
 		window.open("bloodbank_register.html");
     evt.currentTarget.className += " active";
 }
@@ -109,7 +109,7 @@ function open(type) {
 -->
 <!-- cpied content over -->
 <div class="form-group">
-  <label class="col-md-4 control-label">User Name</label>  
+  <label class="col-md-4 control-label">User Name</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -127,7 +127,7 @@ function open(type) {
 <script type="text/javascript">
   function minimum()
   {
-	  
+
     var pass=document.getElementById('mobile').value.length;
     if(pass!=10){
       alert("invalid mobile number");
@@ -136,26 +136,26 @@ function open(type) {
 }
   }
 
-/*function minimum()  
-{  
+/*function minimum()
+{
  var x=d('#mobile').value;
- 
-  /*var "phoneno = /^\d{10}$/;  
-  if(mobile.value.match(phoneno))  
-  {  
-      return true;  
-  }  
-  else  
-  {  
-     alert("Not a valid Phone Number");  
-     return false;  
-  }  
+
+  /*var "phoneno = /^\d{10}$/;
+  if(mobile.value.match(phoneno))
+  {
+      return true;
+  }
+  else
+  {
+     alert("Not a valid Phone Number");
+     return false;
+  }
   }  */
-    
-</script> 
-     
+
+</script>
+
 <div class="form-group">
-  <label class="col-md-4 control-label">Mobile Number</label>  
+  <label class="col-md-4 control-label">Mobile Number</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
@@ -167,7 +167,7 @@ function open(type) {
 
 <!-- pin input-->
 <div class="form-group">
-  <label class="col-md-4 control-label">Password</label>  
+  <label class="col-md-4 control-label">Password</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
@@ -179,12 +179,12 @@ function open(type) {
 <!-- Blood Group input-->
 
 
-<div class="form-group"> 
+<div class="form-group">
   <label class="col-md-4 control-label">Blood Group</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-        
+
     <select name="bloodgroup" class="form-control selectpicker" required >
       <option value="" >Please select Blood Group</option>
 							  <option value="A+">A+</option>
@@ -202,14 +202,14 @@ function open(type) {
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="date">Date Of Birth</label>  
+  <label class="col-md-4 control-label" for="date">Date Of Birth</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
           <i class="fa fa-calendar">
          </i>
   <input  type="date" class="form-control"required name="dob" id="DOB" max="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-216 Months',strtotime($d))); ?>" min="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-780 Months',strtotime($d))); ?>">
-    
+
     </div>
   </div>
 </div>
@@ -217,9 +217,9 @@ function open(type) {
 
 <!-- Text input-->
      <!-- address 1-->
-      
+
 <div class="form-group">
-  <label class="col-md-4 control-label">Home Address</label>  
+  <label class="col-md-4 control-label">Home Address</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -227,9 +227,9 @@ function open(type) {
     </div>
   </div>
 </div>
-
+<!--
 <div class="form-group">
-  <label class="col-md-4 control-label">Home City</label>  
+  <label class="col-md-4 control-label">Home City</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -237,10 +237,10 @@ function open(type) {
     </div>
   </div>
 </div>
-
+-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">Work Address</label>  
+  <label class="col-md-4 control-label">Work Address</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -251,21 +251,21 @@ function open(type) {
 
 
 <!-- Text input-->
- 
+<!--
 <div class="form-group">
-  <label class="col-md-4 control-label">Working City</label>  
+  <label class="col-md-4 control-label">Working City</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
   <input name="wcity" placeholder="Working City (optional)" class="form-control"  type="text">
     </div>
   </div>
-</div>
+</div> -->
 
 
 
 
-<!-- Success message 
+<!-- Success message
 <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thank you for registering with us .</div>
 -->
 <!-- Button -->

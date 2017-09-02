@@ -10,18 +10,18 @@ include 'header.php';
   <script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
 
 
-  
+
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
 <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css'>
 
       <link rel="stylesheet" href="style.css">
 
-  
+
 </head>
 
 <body>
-  
+
   <div class="container">
 
     <form class="well form-horizontal" action="bregister.php" method="post"  id="contact_form">
@@ -73,7 +73,7 @@ div.tab button.active {
 }
 </style>
 <div class="form-group">
-  <label class="col-md-4 control-label">Select User Type</label>  
+  <label class="col-md-4 control-label">Select User Type</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
 <div class="tab">
@@ -90,17 +90,17 @@ div.tab button.active {
 </div>
 
 
-<!--  was not working at the time 
+<!--  was not working at the time
 <script>
 function open(type) {
   if (type=='donor'){
 	  window.open("index.html");
-	  
+
   }
 	else if (type=='hospital'){
 		window.open("hospital_register.html")
 	}
-	else 
+	else
 		window.open("bloodbank_register.html");
     evt.currentTarget.className += " active";
 }
@@ -108,7 +108,7 @@ function open(type) {
 -->
 <!-- cpied content over -->
 <div class="form-group">
-  <label class="col-md-4 control-label">Blood Bank Name</label>  
+  <label class="col-md-4 control-label">Blood Bank Name</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -116,9 +116,41 @@ function open(type) {
     </div>
   </div>
 </div>
+<div class="form-group">
+  <label class="col-md-4 control-label">Email id</label>
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input class="form-control" required name="email" placeholder="E-mail " class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
 
 <div class="form-group">
-  <label class="col-md-4 control-label">User Name</label>  
+  <label class="col-md-4 control-label">contact 1</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+   <input  class="form-control" required type="number" class="form-control"required name="contact1" id="mobile"  onchange="minimum()" placeholder="Enter contact number">
+    </div>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label">contact 2</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+   <input  class="form-control"  type="number" class="form-control" name="contact2" id="mobile"  onchange="minimum()" placeholder="Enter alternate number">
+    </div>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label">User Name</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -133,7 +165,7 @@ function open(type) {
 <script type="text/javascript">
   function minimum()
   {
-	  
+
     var pass=document.getElementById('mobile').value.length;
     if(pass!=10){
       alert("invalid mobile number");
@@ -141,21 +173,12 @@ function open(type) {
     return false;
 }
   }
- </script> 
-       
-<div class="form-group">
-  <label class="col-md-4 control-label">Mobile Number</label>  
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input  class="form-control" required name="mobile" id="mobile"  onchange="minimum()" placeholder="Enter mobile number">
-    </div>
-  </div>
-</div>
+ </script>
+
 
 <!-- pin input-->
 <div class="form-group">
-  <label class="col-md-4 control-label">Password</label>  
+  <label class="col-md-4 control-label">Password</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
@@ -167,7 +190,7 @@ function open(type) {
 <!-- Blood Group input-->
 <!--
 
-<div class="form-group"> 
+<div class="form-group">
   <label class="col-md-4 control-label">Blood Group</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
@@ -186,7 +209,7 @@ function open(type) {
 <!-- Text input-->
       <!--
 <div class="form-group">
-  <label class="col-md-4 control-label" for="date">Date Of Birth</label>  
+  <label class="col-md-4 control-label" for="date">Date Of Birth</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -200,9 +223,9 @@ function open(type) {
 -->
 <!-- Text input-->
      <!-- address 1-->
-      
+
 <div class="form-group">
-  <label class="col-md-4 control-label">Address</label>  
+  <label class="col-md-4 control-label">Address</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -212,7 +235,7 @@ function open(type) {
 </div>
 <!--
 <div class="form-group">
-  <label class="col-md-4 control-label">Work Address</label>  
+  <label class="col-md-4 control-label">Work Address</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -223,21 +246,21 @@ function open(type) {
 -->
 
 <!-- Text input-->
- 
-<div class="form-group">
-  <label class="col-md-4 control-label">City</label>  
+
+<!-- <div class="form-group">
+  <label class="col-md-4 control-label">City</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
   <input   class="form-control" required class="form-control" required  name="city" placeholder="city" class="form-control"  type="text">
     </div>
   </div>
-</div>
+</div> -->
 
 
 
 
-<!-- Success message 
+<!-- Success message
 <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thank you for registering with us .</div>
 -->
 <!-- Button -->
