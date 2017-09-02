@@ -228,16 +228,6 @@ function open(type) {
   </div>
 </div>
 
-<div class="form-group">
-  <label class="col-md-4 control-label">Home City</label>  
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input class="form-control edit" required name="hcity" readonly  type="text" value= <?php echo $_SESSION['hcity'];?> />
-    </div>
-  </div>
-</div>
-
 
 <div class="form-group">
   <label class="col-md-4 control-label">Work Address</label>  
@@ -252,15 +242,6 @@ function open(type) {
 
 <!-- Text input-->
  
-<div class="form-group">
-  <label class="col-md-4 control-label">Working City</label>  
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="wcity" placeholder="Working City (optional)" class="form-control edit" readonly  type="text" value= <?php echo $_SESSION['wcity'];?> />
-    </div>
-  </div>
-</div>
 
 
 
@@ -310,14 +291,12 @@ $('#edit').click(function(){
 		$bloodgroup = $_POST['bloodgroup'];
 		$dob = $_POST['dob'];
 		$haddress = $_POST['haddress'];
-		$hcity = $_POST['hcity'];
 		$waddress = $_POST['waddress'];
-		$wcity = $_POST['wcity'];
 		try 
 			{
 				$sql = "update user_details set name='$name', mobile='$mobile', pin='$pin',bloodgroup='$bloodgroup',
-						dob='$dob', haddress='$haddress', hcity='$hcity', waddress='$waddress',
-						wcity='$wcity' where mobile='$mobile'";
+						dob='$dob', haddress='$haddress', waddress='$waddress',
+					 where mobile='$mobile'";
 				$sql=mysqli_query($conn,$sql);
 				
 				echo '<script> alert("Details are updated");  </script>';

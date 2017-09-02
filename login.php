@@ -1,4 +1,5 @@
 <?php
+session_start();
    include("connection.php");
    include 'header.php';
 					if(isset($_POST['submit']))
@@ -9,12 +10,26 @@
 							if($choice=="donor")	
 							{
 								
-								$sql= "SELECT mobile FROM user_details WHERE mobile='$uname' and pin='$pin'";
+								$sql= "SELECT * FROM user_details WHERE mobile='$uname' and pin='$pin'";
 								$result=mysqli_query($conn,$sql);
 								if(mysqli_num_rows($result)>0)
 									{
-										session_start();
-										$_SESSION['uname']='$uname';
+										//$_SESSION['uname']="tony";
+										while($rows=mysqli_fetch_array($result))
+											{
+												$_SESSION['uname']=$rows['mobile'];
+												$_SESSION['pin']=$rows['pin'];
+												$_SESSION['name']=$rows['name'];
+												$_SESSION['bloodgroup']=$rows['bloodgroup'];
+												$_SESSION['dob']=$rows['dob'];
+												$_SESSION['haddress']=$rows['haddress'];
+												$_SESSION['waddress']=$rows['waddress'];
+												
+												
+											}
+											
+										//session_start();
+										
 										header("location:user_info.php");
 									}
 								else
