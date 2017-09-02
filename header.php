@@ -65,7 +65,7 @@
                         <li><a href="hospitals_list.php">hospitals</a></li>
 						<li><a href="blood_bank.php" >blood bank</a></li>
                         <li><a href="#" >camps</a></li>
-						<li><a href="#" >facts </a></li> 
+						<li><a href="facts.php" >facts </a></li> 
 
 					<?php /*?>	<?php
 							}else{
