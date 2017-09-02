@@ -1,6 +1,15 @@
 <?php
-//session_start();
+session_start();
 include("connection.php");
+include("header.php");
+
+
+if(!(isset($_SESSION['uname']))){
+    echo '<script> alert("session expired please login to continue!!");  
+    window.location="../login.php";
+    </script>';
+}
+
 
 ?>
 
@@ -23,14 +32,22 @@ include("connection.php");
 </head>
 
 <body>
-  
+
+   <a style="margin-top:-70px;margin-right:10px;  position:relative"  class="pull-right" href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
   <div class="container">
 
-    <form class="well form-horizontal" action="register.php" method="post"  id="contact_form">
+  
+ <!-- Logout trial-->
+  
+
+
+
+
+    <form class="well form-horizontal" action="" method="post"  id="contact_form">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Register with Us Today!</legend>
+<legend>  </legend>
 
 <!-- Text input-->
 <!-- style sheet copied --->
@@ -74,7 +91,7 @@ div.tab button.active {
     border-top: none;
 }
 </style>
-<div class="form-group">
+<!--<div class="form-group">
   <label class="col-md-4 control-label">Select User Type</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
@@ -83,13 +100,11 @@ div.tab button.active {
 <button class="tablinks"><a  href="hospital.html">Hospital</a></button>
 <button class="tablinks"><a  href="blood_bank.html">Blood Bank</a></button>
 
-<!--  <button class="tablinks" onclick="location.reload();location.href='index.html'">Donor</button>
-  <button class="tablinks" onclick="location.reload();location.href='hospital.html'">Hospital</button>
-  <button class="tablinks" onclick="location.reload();location.href='blood_bank.html'">Blood Bank</button>-->
+
 </div>
 </div>
   </div>
-</div>
+</div>-->
 
 <!--  was not working at the time 
 <script>
@@ -113,7 +128,7 @@ function open(type) {
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  class="form-control" required name="name" placeholder="Name" class="form-control"  type="text">
+  <input  class="form-control edit" readonly required name="name" placeholder="Name" class="form-control"  type="text" value=<?php echo $_SESSION['name'];?> />
     </div>
   </div>
 </div>
@@ -125,30 +140,17 @@ function open(type) {
 <!-- Text input-->
 
 <script type="text/javascript">
-  /*function minimum()
+  function minimum()
   {
-	  alert("sdf");
+	  
     var pass=document.getElementById('mobile').value.length;
-    if(pass!=10){
-      alert("invalid mobile number");
-      document.getElementById('mobile').value="";
-    return false;
-}*/
-
-
-function mininum(mobile)  
-{  
-  var phoneno = /^\d{10}$/;  
-  if(mobile.value.match(phoneno))  
-  {  
-      return true;  
-  }  
-  else  
-  {  
-     alert("Not a valid Phone Number");  
-     return false;  
-  }  
-  }  
+    if(pass!=10)
+		{
+			  alert("invalid mobile number");
+			  document.getElementById('mobile').value="";
+			return false;
+		}
+  }
     
 </script> 
      
@@ -157,7 +159,8 @@ function mininum(mobile)
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input type="number" class="form-control"required name="mobile" id="mobile"  onchange="minimum(mobile)" placeholder="Enter mobile number">
+        
+  <input type="number" class="form-control edit" readonly required name="mobile" id="mobile"  onchange="minimum()" value=<?php echo $_SESSION['uname'];?> />
 
     </div>
   </div>
@@ -169,13 +172,12 @@ function mininum(mobile)
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
-  <input class="form-control" required name="pin" placeholder="Password" class="form-control" type="password">
+  <input class="form-control edit" required name="pin"  readonly type="text" value= <?php echo $_SESSION['pin'];?> />
     </div>
   </div>
 </div>
 
 <!-- Blood Group input-->
-
 
 <div class="form-group"> 
   <label class="col-md-4 control-label">Blood Group</label>
@@ -183,8 +185,8 @@ function mininum(mobile)
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
         
-    <select name="bloodgroup" class="form-control selectpicker" required >
-      <option value="" >Please select Blood Group</option>
+    <select name="bloodgroup" class="form-control selectpicker edit" readonly required >
+      <option value=<?php echo $_SESSION['bloodgroup'];?> ><?php echo $_SESSION['bloodgroup'];?> </option>
 							  <option value="A+">A+</option>
 					  <option value="A-">A-</option>
 					  <option value="AB+">AB+</option>
@@ -206,7 +208,7 @@ function mininum(mobile)
         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
           <i class="fa fa-calendar">
          </i>
-  <input  type="date" class="form-control"required name="dob" id="DOB" max="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-216 Months',strtotime($d))); ?>" min="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-780 Months',strtotime($d))); ?>">
+  <input  type="date" class="form-control edit" readonly required value=<?php echo $_SESSION['dob'];?> name="dob" id="dob" max="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-216 Months',strtotime($d))); ?>" min="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-780 Months',strtotime($d))); ?>">
     
     </div>
   </div>
@@ -221,7 +223,7 @@ function mininum(mobile)
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input class="form-control" required name="haddress" placeholder="Home Address " class="form-control" type="text">
+  <input class="form-control edit" required name="haddress" placeholder="Home Address "  readonly type="text" value= <?php echo $_SESSION['haddress'];?> />
     </div>
   </div>
 </div>
@@ -231,7 +233,7 @@ function mininum(mobile)
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input class="form-control" required name="hcity" placeholder="Home City" class="form-control"  type="text">
+  <input class="form-control edit" required name="hcity" readonly  type="text" value= <?php echo $_SESSION['hcity'];?> />
     </div>
   </div>
 </div>
@@ -242,7 +244,7 @@ function mininum(mobile)
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="waddress" placeholder="Work Address (optional)" class="form-control" type="text">
+  <input name="waddress" placeholder="Work Address (optional)" class="form-control edit" readonly type="text" value= <?php echo $_SESSION['waddress'];?> />
     </div>
   </div>
 </div>
@@ -255,7 +257,7 @@ function mininum(mobile)
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="wcity" placeholder="Working City (optional)" class="form-control"  type="text">
+  <input name="wcity" placeholder="Working City (optional)" class="form-control edit" readonly  type="text" value= <?php echo $_SESSION['wcity'];?> />
     </div>
   </div>
 </div>
@@ -270,7 +272,10 @@ function mininum(mobile)
 <div class="form-group">
   <label class="col-md-4 control-label"></label>
   <div class="col-md-4">
-    <button type="submit" class="btn btn-warning" >Submit <span class="glyphicon glyphicon-send"></span></button>
+    <button type="submit" name="update" class="btn btn-success update" disabled >Submit <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+  <div class="col-md-4">
+    <button type="button" id="edit" class="btn btn-success" >Edit <span class="glyphicon glyphicon-send"></span></button>
   </div>
 </div>
 
@@ -284,6 +289,43 @@ function mininum(mobile)
 
   <!--  <script src="js/index.js"></script>
   -->
-
+<script>
+$('#edit').click(function(){
+	$('.edit').removeAttr('readonly');
+	$('.update').removeAttr('disabled');
+});
+</script>
 </body>
 </html>
+
+
+<!--Code for updation of details -->
+
+<?php
+	if(isset($_POST['update']))
+	{
+		$name = $_POST['name'];
+		$mobile = $_POST['mobile'];	
+		$pin = $_POST['pin'];
+		$bloodgroup = $_POST['bloodgroup'];
+		$dob = $_POST['dob'];
+		$haddress = $_POST['haddress'];
+		$hcity = $_POST['hcity'];
+		$waddress = $_POST['waddress'];
+		$wcity = $_POST['wcity'];
+		try 
+			{
+				$sql = "update user_details set name='$name', mobile='$mobile', pin='$pin',bloodgroup='$bloodgroup',
+						dob='$dob', haddress='$haddress', hcity='$hcity', waddress='$waddress',
+						wcity='$wcity' where mobile='$mobile'";
+				$sql=mysqli_query($conn,$sql);
+				
+				echo '<script> alert("Details are updated");  </script>';
+			}
+		catch(PDOException $e)
+			{
+				echo $sql . "<br>" . $e->getMessage();
+			}
+}
+	
+?>
