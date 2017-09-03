@@ -285,6 +285,7 @@ function open(type) {
   </div>
 </div>
 
+
 <div class="form-group">
   <label class="col-md-4 control-label">Home City</label>
     <div class="col-md-4 inputGroupContainer">
@@ -367,14 +368,11 @@ $('#edit').click(function(){
 		$bloodgroup = $_POST['bloodgroup'];
 		$dob = $_POST['dob'];
 		$haddress = $_POST['haddress'];
-		$hcity = $_POST['hcity'];
 		$waddress = $_POST['waddress'];
-		$wcity = $_POST['wcity'];
-		try
+		try 
 			{
-				$sql = "update user_details set name='$name', mobile='$mobile', pin='$pin',bloodgroup='$bloodgroup',
-						dob='$dob', haddress='$haddress', hcity='$hcity', waddress='$waddress',
-						wcity='$wcity' where mobile='$mobile'";
+				$sql = "update user_details set name='$name', pin='$pin',bloodgroup='$bloodgroup',
+						dob='$dob', haddress='$haddress', waddress='$waddress' where mobile='$mobile'";
 				$sql=mysqli_query($conn,$sql);
 
 				echo '<script> alert("Details are updated");  </script>';
@@ -382,6 +380,7 @@ $('#edit').click(function(){
 		catch(PDOException $e)
 			{
 				echo $sql . "<br>" . $e->getMessage();
+				echo '<script> alert("This mobile number already exists");  </script>';
 			}
 }
 

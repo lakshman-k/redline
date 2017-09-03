@@ -25,13 +25,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hospital_details`
+-- Table structure for table `blood_bank_details`
 --
 
-CREATE TABLE `hospital_details` (
-  `h_username` varchar(20) NOT NULL,
+CREATE TABLE `blood_bank_details` (
+  `b_username` varchar(20) NOT NULL,
   `pin` varchar(25) NOT NULL,
-  `hospital_name` varchar(20) NOT NULL,
+  `bloodbank_name` varchar(20) NOT NULL,
   `contact1` bigint(12) NOT NULL,
   `contact2` bigint(20) NOT NULL,
   `address` varchar(25) NOT NULL,
@@ -43,12 +43,11 @@ CREATE TABLE `hospital_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `hospital_details`
+-- Dumping data for table `blood_bank_details`
 --
 
-INSERT INTO `hospital_details` (`h_username`, `pin`, `hospital_name`, `contact1`, `contact2`, `address`, `h_lat`, `h_lon`, `r_date`, `last_login`, `email`) VALUES
-('45', '', 'sd', 1234567895, 32, 'sg palya', 12.9309643, 77.6049218, '2017-09-02 16:36:13', '2017-09-02 11:06:13', '2435'),
-('454', '123', 'sd', 1234567895, 32, 'sg palya', 12.9309643, 77.6049218, '2017-09-02 16:36:55', '2017-09-02 11:06:55', '2435'),
+INSERT INTO `blood_bank_details` (`b_username`, `pin`, `bloodbank_name`, `contact1`, `contact2`, `address`, `h_lat`, `h_lon`, `r_date`, `last_login`, `email`) VALUES
+('567456', '1234', '345', 1234567890, 456734567, 'sg palya', 12.9309643, 77.6049218, '2017-09-02 16:50:40', '2017-09-02 11:20:40', '4'),
 ('ads', '122', '', 0, 0, '', 0, 0, '2017-09-01 11:43:40', '2017-09-01 06:16:14', '');
 
 --
@@ -56,10 +55,10 @@ INSERT INTO `hospital_details` (`h_username`, `pin`, `hospital_name`, `contact1`
 --
 
 --
--- Indexes for table `hospital_details`
+-- Indexes for table `blood_bank_details`
 --
-ALTER TABLE `hospital_details`
-  ADD PRIMARY KEY (`h_username`);
+ALTER TABLE `blood_bank_details`
+  ADD PRIMARY KEY (`b_username`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

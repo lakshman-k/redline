@@ -26,9 +26,12 @@ session_start();
 												$_SESSION['waddress']=$rows['waddress'];
 
 
+
 											}
 
-										//session_start();
+
+											}
+
 
 										header("location:user_info.php");
 									}
@@ -46,7 +49,23 @@ session_start();
 								$result=mysqli_query($conn,$sql);
 								if(mysqli_num_rows($result)>0)
 									{
-										header("location:hospital.html");
+
+										while($rows=mysqli_fetch_array($result))
+											{
+												$_SESSION['h_username']=$rows['h_username'];
+												$_SESSION['pin']=$rows['pin'];
+												$_SESSION['email']=$rows['email'];
+												$_SESSION['hospital_name']=$rows['hospital_name'];
+												$_SESSION['contact1']=$rows['contact1'];
+												$_SESSION['contact2']=$rows['contact2'];
+												$_SESSION['address']=$rows['address'];
+
+
+											}
+
+
+
+										header("location:hospital_info.php");
 									}
 
 								else
@@ -63,7 +82,19 @@ session_start();
 								$result=mysqli_query($conn,$sql);
 								if(mysqli_num_rows($result)>0)
 									{
-										header("location:blood_bank.html");
+										while($rows=mysqli_fetch_array($result))
+											{
+												$_SESSION['b_username']=$rows['b_username'];
+												$_SESSION['pin']=$rows['pin'];
+												$_SESSION['email']=$rows['email'];
+												$_SESSION['bloodbank_name']=$rows['bloodbank_name'];
+												$_SESSION['contact1']=$rows['contact1'];
+												$_SESSION['contact2']=$rows['contact2'];
+												$_SESSION['address']=$rows['address'];
+
+
+											}
+										header("location:bloodbank_info.php");
 									}
 
 								else
