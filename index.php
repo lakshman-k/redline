@@ -3,7 +3,6 @@ session_start();
 include 'connection.php';
 include 'header.php';
 ?>
-
 <html >
 <head>
   <meta charset="UTF-8">
@@ -83,30 +82,12 @@ div.tab button.active {
 <button class="tablinks"><a  href="hospital.php">Hospital</a></button>
 <button class="tablinks"><a  href="blood_bank.php">Blood Bank</a></button>
 
-<!--  <button class="tablinks" onclick="location.reload();location.href='index.html'">Donor</button>
-  <button class="tablinks" onclick="location.reload();location.href='hospital.html'">Hospital</button>
-  <button class="tablinks" onclick="location.reload();location.href='blood_bank.html'">Blood Bank</button>-->
 </div>
 </div>
   </div>
 </div>
 
-<!--  was not working at the time
-<script>
-function open(type) {
-  if (type=='donor'){
-	  window.open("index.html");
 
-  }
-	else if (type=='hospital'){
-		window.open("hospital_register.html")
-	}
-	else
-		window.open("bloodbank_register.html");
-    evt.currentTarget.className += " active";
-}
-</script>
--->
 <!-- cpied content over -->
 <div class="form-group">
   <label class="col-md-4 control-label">User Name</label>
@@ -136,21 +117,6 @@ function open(type) {
 }
   }
 
-/*function minimum()
-{
- var x=d('#mobile').value;
-
-  /*var "phoneno = /^\d{10}$/;
-  if(mobile.value.match(phoneno))
-  {
-      return true;
-  }
-  else
-  {
-     alert("Not a valid Phone Number");
-     return false;
-  }
-  }  */
 
 </script>
 
@@ -227,17 +193,7 @@ function open(type) {
     </div>
   </div>
 </div>
-<!--
-<div class="form-group">
-  <label class="col-md-4 control-label">Home City</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input class="form-control" required name="hcity" placeholder="Home City" class="form-control"  type="text">
-    </div>
-  </div>
-</div>
--->
+
 
 <div class="form-group">
   <label class="col-md-4 control-label">Work Address</label>
@@ -250,17 +206,6 @@ function open(type) {
 </div>
 
 
-<!-- Text input-->
-<!--
-<div class="form-group">
-  <label class="col-md-4 control-label">Working City</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="wcity" placeholder="Working City (optional)" class="form-control"  type="text">
-    </div>
-  </div>
-</div> -->
 
 
 

@@ -1,64 +1,79 @@
 <?php
+session_start();
    include("connection.php");
    include 'header.php';
 					if(isset($_POST['submit']))
 					 {
 								$choice = $_POST['type'];
-								$uname=$_POST['name'];//name of the text box of usernname 
+								$uname=$_POST['name'];//name of the text box of usernname
 								$pin=$_POST['pin']; //name of fth e password Textbox
-							if($choice=="donor")	
+							if($choice=="donor")
 							{
-								
-								$sql= "SELECT mobile FROM user_details WHERE mobile='$uname' and pin='$pin'";
+
+								$sql= "SELECT * FROM user_details WHERE mobile='$uname' and pin='$pin'";
 								$result=mysqli_query($conn,$sql);
 								if(mysqli_num_rows($result)>0)
 									{
-										session_start();
-										$_SESSION['uname']='$uname';
+										//$_SESSION['uname']="tony";
+										while($rows=mysqli_fetch_array($result))
+											{
+												$_SESSION['uname']=$rows['mobile'];
+												$_SESSION['pin']=$rows['pin'];
+												$_SESSION['name']=$rows['name'];
+												$_SESSION['bloodgroup']=$rows['bloodgroup'];
+												$_SESSION['dob']=$rows['dob'];
+												$_SESSION['haddress']=$rows['haddress'];
+												$_SESSION['waddress']=$rows['waddress'];
+
+
+											}
+
+										//session_start();
+
 										header("location:user_info.php");
 									}
 								else
 									{
 										header("location:login.php?fail");
 										die();
-									}		
+									}
 							}
-							
+
 							else if($choice=="hospital")
 							{
-								
+
 								$sql= "SELECT uname FROM hospital_details WHERE uname='$uname' and pin='$pin'";
 								$result=mysqli_query($conn,$sql);
 								if(mysqli_num_rows($result)>0)
 									{
 										header("location:hospital.html");
 									}
-							
+
 								else
 									{
 										header("location:login.php?fail");
 										die();
-									}	
+									}
 							}
-									
+
 							else if($choice=="bloodbank")
 							{
-								
+
 								$sql= "SELECT uname FROM bloodbank_details WHERE uname='$uname' and pin='$pin'";
 								$result=mysqli_query($conn,$sql);
 								if(mysqli_num_rows($result)>0)
 									{
 										header("location:blood_bank.html");
 									}
-							
+
 								else
 									{
 										header("location:login.php?fail");
 										die();
-									}	
-							}	
+									}
+							}
 			}
-									
+
 ?>
 <!DOCTYPE html>
 <html >
@@ -68,20 +83,20 @@
   <script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
 
 
-  
+
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
 <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css'>
 		 <link rel="stylesheet" href="css/style1.css">
       <link rel="stylesheet" href="css/style.css">
-     
+
       <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
-  
+
 </head>
 
 <body>
-  
+
   <div class="container">
 
     <form class="well form-horizontal" action="" method="post"  id="contact_form">
@@ -133,9 +148,9 @@ div.tab button.active {
 }
 </style>
 <div class="form-group">
-  <label class="col-md-4 control-label">Select User Type</label>  
+  <label class="col-md-4 control-label">Select User Type</label>
     <div class="col-md-4 inputGroupContainer">
-   
+
     <div class="input-group">
 <!--<div class="tab">
   <button class="tablinks" onclick="location.reload();location.href='index.html'">Donor</button>
@@ -155,17 +170,17 @@ div.tab button.active {
   </div>
 </div>
 
-<!--  was not working at the time 
+<!--  was not working at the time
 <script>
 function open(type) {
   if (type=='donor'){
 	  window.open("index.html");
-	  
+
   }
 	else if (type=='hospital'){
 		window.open("hospital_register.html")
 	}
-	else 
+	else
 		window.open("bloodbank_register.html");
     evt.currentTarget.className += " active";
 }
@@ -174,7 +189,7 @@ function open(type) {
 <!-- cpied content over -->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">Mobile No / User Name</label>  
+  <label class="col-md-4 control-label">Mobile No / User Name</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -188,11 +203,11 @@ function open(type) {
 
 
 <!-- Text input-->
-       
+
 
 <!-- pin input-->
 <div class="form-group">
-  <label class="col-md-4 control-label">Password</label>  
+  <label class="col-md-4 control-label">Password</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
@@ -201,7 +216,7 @@ function open(type) {
   </div>
 </div>
 
-		
+
 
 <!-- Button -->
 <div class="form-group">
@@ -211,13 +226,14 @@ function open(type) {
   </div>
 </div>
 
-</fieldset>
+
  <?php
-        if (isset($_GET['fail'])) 
-			{
-                   echo "invalid username or password!";
-            }
+      //   if (isset($_GET['fail']))
+			// {
+      //              echo "invalid username or password!";
+      //       }
 	?>
+  </fieldset>
 </form>
 
 </div>
