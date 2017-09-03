@@ -42,11 +42,27 @@ session_start();
 							else if($choice=="hospital")
 							{
 								
-								$sql= "SELECT uname FROM hospital_details WHERE uname='$uname' and pin='$pin'";
+								$sql= "SELECT * FROM hospital_details WHERE h_username='$uname' and pin='$pin'";
 								$result=mysqli_query($conn,$sql);
 								if(mysqli_num_rows($result)>0)
 									{
-										header("location:hospital.html");
+										
+										while($rows=mysqli_fetch_array($result))
+											{
+												$_SESSION['h_username']=$rows['h_username'];
+												$_SESSION['pin']=$rows['pin'];
+												$_SESSION['email']=$rows['email'];
+												$_SESSION['hospital_name']=$rows['hospital_name'];
+												$_SESSION['contact1']=$rows['contact1'];
+												$_SESSION['contact2']=$rows['contact2'];
+												$_SESSION['address']=$rows['address'];
+												
+												
+											}
+										
+										
+										
+										header("location:hospital_info.php");
 									}
 							
 								else
@@ -59,11 +75,23 @@ session_start();
 							else if($choice=="bloodbank")
 							{
 								
-								$sql= "SELECT uname FROM bloodbank_details WHERE uname='$uname' and pin='$pin'";
+								$sql= "SELECT * FROM  blood_bank_details WHERE b_username='$uname' and pin='$pin'";
 								$result=mysqli_query($conn,$sql);
 								if(mysqli_num_rows($result)>0)
 									{
-										header("location:blood_bank.html");
+										while($rows=mysqli_fetch_array($result))
+											{
+												$_SESSION['b_username']=$rows['b_username'];
+												$_SESSION['pin']=$rows['pin'];
+												$_SESSION['email']=$rows['email'];
+												$_SESSION['bloodbank_name']=$rows['bloodbank_name'];
+												$_SESSION['contact1']=$rows['contact1'];
+												$_SESSION['contact2']=$rows['contact2'];
+												$_SESSION['address']=$rows['address'];
+												
+												
+											}
+										header("location:bloodbank_info.php");
 									}
 							
 								else
