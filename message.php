@@ -29,7 +29,7 @@ while($rows=mysqli_fetch_array($result))
 
 }
 
-
+$h_lat =h_lat+0.000001;
 
 $ch = curl_init();
 $user="lakshman.k@mca.christuniversity.in:123456";
