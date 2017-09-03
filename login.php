@@ -14,7 +14,7 @@ session_start();
 								$result=mysqli_query($conn,$sql);
 								if(mysqli_num_rows($result)>0)
 									{
-										//$_SESSION['uname']="tony";
+										
 										while($rows=mysqli_fetch_array($result))
 											{
 												$_SESSION['uname']=$rows['mobile'];
