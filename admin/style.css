@@ -1,0 +1,19 @@
+.login{
+	background-image: url("bg/recruitment.jpg");
+	background-size: 80%;
+}
+.log{
+	margin-top: 12%
+	background-color:white;
+	opacity:0.8;
+	width:40%;
+}
+.login1{
+	margin-top: 15%;
+	margin-left:80%;
+}
+#header
+{
+	background-image: url(bg/entrepreneur.jpg);
+	background-size: 100%;
+}
