@@ -2,39 +2,49 @@
 session_start();
    include("connection.php");
    include 'header.php';
-					if(isset($_POST['submit']))
+				if(isset($_POST['submit']))
 					 {
 								$choice = $_POST['type'];
 								$uname=$_POST['name'];//name of the text box of usernname
 								$pin=$_POST['pin']; //name of fth e password Textbox
 							if($choice=="donor")
 							{
-
+try{
 								$sql= "SELECT * FROM user_details WHERE mobile='$uname' and pin='$pin'";
-								$result=mysqli_query($conn,$sql);
-								if(mysqli_num_rows($result)>0)
-									{
-										//$_SESSION['uname']="tony";
-										while($rows=mysqli_fetch_array($result))
-											{
-												$_SESSION['uname']=$rows['mobile'];
-												$_SESSION['pin']=$rows['pin'];
-												$_SESSION['name']=$rows['name'];
-												$_SESSION['bloodgroup']=$rows['bloodgroup'];
-												$_SESSION['dob']=$rows['dob'];
-												$_SESSION['haddress']=$rows['haddress'];
-												$_SESSION['waddress']=$rows['waddress'];
-
-
-
-											}
-
-
-											}
-
-
-										header("location:user_info.php");
-									}
+								$result=$conn->prepare($sql);
+                $result->execute();
+                $result1 = $result->fetchAll();
+                print_r($result1);
+                echo $result1[0][0];
+}
+catch (PDOException $e)
+{
+  echo "error" .$e->getMessage();
+}
+								// if(mysqli_num_rows($result)>0)
+								// 	{
+								// 		//$_SESSION['uname']="tony";
+								// 		// while($rows=mysqli_fetch_array($result))
+								// 		// 	{
+								// 		// 		$_SESSION['uname']=$rows['mobile'];
+								// 		// 		$_SESSION['pin']=$rows['pin'];
+								// 		// 		$_SESSION['name']=$rows['name'];
+								// 		// 		$_SESSION['bloodgroup']=$rows['bloodgroup'];
+								// 		// 		$_SESSION['dob']=$rows['dob'];
+								// 		// 		$_SESSION['haddress']=$rows['haddress'];
+								// 		// 		$_SESSION['waddress']=$rows['waddress'];
+                //     //
+                //     //
+                //     //
+								// 		//
+                //     //
+                //     //
+								// 		// 	}
+                //
+                //
+								// 		header("location:user_info.php");
+								// 	}
+              }
 								else
 									{
 										header("location:login.php?fail");
@@ -42,68 +52,68 @@ session_start();
 									}
 							}
 
-							else if($choice=="hospital")
-							{
+							// else if($choice=="hospital")
+							// {
+              //
+							// 	$sql= "SELECT uname FROM hospital_details WHERE uname='$uname' and pin='$pin'";
+							// 	$result=mysqli_query($conn,$sql);
+							// 	if(mysqli_num_rows($result)>0)
+							// 		{
+              //
+							// 			while($rows=mysqli_fetch_array($result))
+							// 				{
+							// 					$_SESSION['h_username']=$rows['h_username'];
+							// 					$_SESSION['pin']=$rows['pin'];
+							// 					$_SESSION['email']=$rows['email'];
+							// 					$_SESSION['hospital_name']=$rows['hospital_name'];
+							// 					$_SESSION['contact1']=$rows['contact1'];
+							// 					$_SESSION['contact2']=$rows['contact2'];
+							// 					$_SESSION['address']=$rows['address'];
+              //
+              //
+							// 				}
+              //
+              //
+              //
+							// 			header("location:hospital_info.php");
+							// 		}
+              //
+							// 	else
+							// 		{
+							// 			header("location:login.php?fail");
+							// 			die();
+							// 		}
+							// }
+              //
+							// else if($choice=="bloodbank")
+							// {
+              //
+							// 	$sql= "SELECT uname FROM bloodbank_details WHERE uname='$uname' and pin='$pin'";
+							// 	$result=mysqli_query($conn,$sql);
+							// 	if(mysqli_num_rows($result)>0)
+							// 		{
+							// 			while($rows=mysqli_fetch_array($result))
+							// 				{
+							// 					$_SESSION['b_username']=$rows['b_username'];
+							// 					$_SESSION['pin']=$rows['pin'];
+							// 					$_SESSION['email']=$rows['email'];
+							// 					$_SESSION['bloodbank_name']=$rows['bloodbank_name'];
+							// 					$_SESSION['contact1']=$rows['contact1'];
+							// 					$_SESSION['contact2']=$rows['contact2'];
+							// 					$_SESSION['address']=$rows['address'];
+              //
+              //
+							// 				}
+							// 			header("location:bloodbank_info.php");
+							// 		}
+              //
+							// 	else
+							// 		{
+							// 			header("location:login.php?fail");
+							// 			die();
+							// 		}
+							// }
 
-								$sql= "SELECT uname FROM hospital_details WHERE uname='$uname' and pin='$pin'";
-								$result=mysqli_query($conn,$sql);
-								if(mysqli_num_rows($result)>0)
-									{
-
-										while($rows=mysqli_fetch_array($result))
-											{
-												$_SESSION['h_username']=$rows['h_username'];
-												$_SESSION['pin']=$rows['pin'];
-												$_SESSION['email']=$rows['email'];
-												$_SESSION['hospital_name']=$rows['hospital_name'];
-												$_SESSION['contact1']=$rows['contact1'];
-												$_SESSION['contact2']=$rows['contact2'];
-												$_SESSION['address']=$rows['address'];
-
-
-											}
-
-
-
-										header("location:hospital_info.php");
-									}
-
-								else
-									{
-										header("location:login.php?fail");
-										die();
-									}
-							}
-
-							else if($choice=="bloodbank")
-							{
-
-								$sql= "SELECT uname FROM bloodbank_details WHERE uname='$uname' and pin='$pin'";
-								$result=mysqli_query($conn,$sql);
-								if(mysqli_num_rows($result)>0)
-									{
-										while($rows=mysqli_fetch_array($result))
-											{
-												$_SESSION['b_username']=$rows['b_username'];
-												$_SESSION['pin']=$rows['pin'];
-												$_SESSION['email']=$rows['email'];
-												$_SESSION['bloodbank_name']=$rows['bloodbank_name'];
-												$_SESSION['contact1']=$rows['contact1'];
-												$_SESSION['contact2']=$rows['contact2'];
-												$_SESSION['address']=$rows['address'];
-
-
-											}
-										header("location:bloodbank_info.php");
-									}
-
-								else
-									{
-										header("location:login.php?fail");
-										die();
-									}
-							}
-			}
 
 ?>
 <!DOCTYPE html>
