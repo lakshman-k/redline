@@ -8,113 +8,87 @@ session_start();
 								$uname=$_POST['name'];//name of the text box of usernname
 								$pin=$_POST['pin']; //name of fth e password Textbox
 							if($choice=="donor")
-							{
-try{
-								$sql= "SELECT * FROM user_details WHERE mobile='$uname' and pin='$pin'";
-								$result=$conn->prepare($sql);
-                $result->execute();
-                $result1 = $result->fetchAll();
-                print_r($result1);
-                echo $result1[0][0];
-}
-catch (PDOException $e)
-{
-  echo "error" .$e->getMessage();
-}
-								// if(mysqli_num_rows($result)>0)
-								// 	{
-								// 		//$_SESSION['uname']="tony";
-								// 		// while($rows=mysqli_fetch_array($result))
-								// 		// 	{
-								// 		// 		$_SESSION['uname']=$rows['mobile'];
-								// 		// 		$_SESSION['pin']=$rows['pin'];
-								// 		// 		$_SESSION['name']=$rows['name'];
-								// 		// 		$_SESSION['bloodgroup']=$rows['bloodgroup'];
-								// 		// 		$_SESSION['dob']=$rows['dob'];
-								// 		// 		$_SESSION['haddress']=$rows['haddress'];
-								// 		// 		$_SESSION['waddress']=$rows['waddress'];
-                //     //
-                //     //
-                //     //
-								// 		//
-                //     //
-                //     //
-								// 		// 	}
-                //
-                //
-								// 		header("location:user_info.php");
-								// 	}
-              }
-								else
-									{
-										header("location:login.php?fail");
-										die();
-									}
-							}
-
-							// else if($choice=="hospital")
-							// {
-              //
-							// 	$sql= "SELECT uname FROM hospital_details WHERE uname='$uname' and pin='$pin'";
-							// 	$result=mysqli_query($conn,$sql);
-							// 	if(mysqli_num_rows($result)>0)
-							// 		{
-              //
-							// 			while($rows=mysqli_fetch_array($result))
-							// 				{
-							// 					$_SESSION['h_username']=$rows['h_username'];
-							// 					$_SESSION['pin']=$rows['pin'];
-							// 					$_SESSION['email']=$rows['email'];
-							// 					$_SESSION['hospital_name']=$rows['hospital_name'];
-							// 					$_SESSION['contact1']=$rows['contact1'];
-							// 					$_SESSION['contact2']=$rows['contact2'];
-							// 					$_SESSION['address']=$rows['address'];
-              //
-              //
-							// 				}
-              //
-              //
-              //
-							// 			header("location:hospital_info.php");
-							// 		}
-              //
-							// 	else
-							// 		{
-							// 			header("location:login.php?fail");
-							// 			die();
-							// 		}
-							// }
-              //
-							// else if($choice=="bloodbank")
-							// {
-              //
-							// 	$sql= "SELECT uname FROM bloodbank_details WHERE uname='$uname' and pin='$pin'";
-							// 	$result=mysqli_query($conn,$sql);
-							// 	if(mysqli_num_rows($result)>0)
-							// 		{
-							// 			while($rows=mysqli_fetch_array($result))
-							// 				{
-							// 					$_SESSION['b_username']=$rows['b_username'];
-							// 					$_SESSION['pin']=$rows['pin'];
-							// 					$_SESSION['email']=$rows['email'];
-							// 					$_SESSION['bloodbank_name']=$rows['bloodbank_name'];
-							// 					$_SESSION['contact1']=$rows['contact1'];
-							// 					$_SESSION['contact2']=$rows['contact2'];
-							// 					$_SESSION['address']=$rows['address'];
-              //
-              //
-							// 				}
-							// 			header("location:bloodbank_info.php");
-							// 		}
-              //
-							// 	else
-							// 		{
-							// 			header("location:login.php?fail");
-							// 			die();
-							// 		}
-							// }
-
-
+								{
+									try
+										{
+											$sql= "SELECT * FROM user_details WHERE mobile='$uname' and pin='$pin'";
+											$result=$conn->prepare($sql);
+											$result->execute();
+											$result1 = $result->fetchAll();
+											//print_r($result1);
+											//echo $result1[0][0];
+											$_SESSION['mobile']=$result1[0][0];
+											$_SESSION['pin']=$result1[0][1];
+											$_SESSION['name']=$result1[0][2];
+											$_SESSION['bloodgroup']=$result1[0][3];
+											$_SESSION['dob']=$result1[0][4];
+											$_SESSION['haddress']=$result1[0][5];
+											$_SESSION['waddress']=$result1[0][6];
+											//echo $_SESSION['name'];
+											header("location:user_profile.php");
+											
+										}
+									catch (PDOException $e)
+										{
+										  echo "error" .$e->getMessage();
+										}
+								}
+								
+							else if($choice=="hospital")
+								{
+									try
+										{
+											$sql= "SELECT * FROM hospital_details WHERE h_username='$uname' and pin='$pin'";
+											$result=$conn->prepare($sql);
+											$result->execute();
+											$result1 = $result->fetchAll();
+											//print_r($result1);
+											//echo $result1[0][0];
+											$_SESSION['h_username']=$result1[0][0];
+											$_SESSION['pin']=$result1[0][1];
+											$_SESSION['hospital_name']=$result1[0][2];
+											$_SESSION['contact1']=$result1[0][3];
+											$_SESSION['contact2']=$result1[0][4];
+											$_SESSION['address']=$result1[0][5];
+											$_SESSION['email']=$result1[0][10];
+											//echo $_SESSION['hospital_name'];
+											header("location:l_hospital.php");
+											
+										}
+									catch (PDOException $e)
+										{
+										  echo "error" .$e->getMessage();
+										}
+								}	
+							else if($choice=="bloodbank")
+								{
+									try
+										{
+											$sql= "SELECT * FROM  blood_bank_details WHERE b_username='$uname' and pin='$pin'";
+											$result=$conn->prepare($sql);
+											$result->execute();
+											$result1 = $result->fetchAll();
+											//print_r($result1);
+											//echo $result1[0][0];
+											$_SESSION['b_username']=$result1[0][0];
+											$_SESSION['pin']=$result1[0][1];
+											$_SESSION['bloodbank_name']=$result1[0][2];
+											$_SESSION['contact1']=$result1[0][3];
+											$_SESSION['contact2']=$result1[0][4];
+											$_SESSION['address']=$result1[0][5];
+											$_SESSION['email']=$result1[0][10];
+											//echo $_SESSION['hospital_name'];
+											header("location:bloodbank_info.php");
+											
+										}
+									catch (PDOException $e)
+										{
+										  echo "error" .$e->getMessage();
+										}
+								}	
+								
+								
+			}
 ?>
 <!DOCTYPE html>
 <html >

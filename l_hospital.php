@@ -4,11 +4,11 @@ include("connection.php");
 include("header.php");
 
 
-if(!(isset($_SESSION['uname']))){
+/*if(!(isset($_SESSION['uname']))){
     echo '<script> alert("session expired please login to continue!!");
     window.location="../login.php";
     </script>';
-}
+}*/
 
 
 ?>
@@ -84,7 +84,7 @@ if(!(isset($_SESSION['uname']))){
   <a href="#">Recieved Blood</a>
   <a href="#">Organize Camps</a>
   <a href="#">Completed Camps</a>
-  <a href="#">info</a>
+  <a href="hospital_info.php">info</a>
 </div>
 </div>
 

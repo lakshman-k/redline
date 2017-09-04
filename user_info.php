@@ -4,8 +4,8 @@ include("connection.php");
 include("header.php");
 
 
-if(!(isset($_SESSION['uname']))){
-    echo '<script> alert("session expired please login to continue!!");
+if(!(isset($_SESSION['mobile']))){
+    echo '<script> alert("session expired please login to continue!!");  
     window.location="../login.php";
     </script>';
 }
@@ -28,74 +28,17 @@ if(!(isset($_SESSION['uname']))){
       <link rel="stylesheet" href="css/style.css">
       <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
-
+   
 </head>
 
 <body>
-<style>
-#nav {
-    line-height:30px;
-    background-color:#eeeeee;
-    height:500px;
-    width:200px;
-    float:left;
-    padding:5px;
-}
-#section {
-    width:850px;
-    float:left;
-    padding:10px;
-}
-</style>
-
-
-<!-- Page Content -->
-
-
-<div id="nav">
-<style>
-.vertical-menu {
-    width: 200px;
-}
-
-.vertical-menu a {
-    background-color: #eee;
-    color: black;
-    display: block;
-    padding: 12px;
-    text-decoration: none;
-}
-
-.vertical-menu a:hover {
-    background-color: #ccc;
-}
-
-.vertical-menu a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-</style>
-<body>
-
-<h3>Welcome User </h3>
-
-<div class="vertical-menu">
-  <a href="#" class="active">Info</a>
-  <a href="#">Donations</a>
-  <a href="#">Donate Now</a>
-  <a href="#">Link 3</a>
-  <a href="#">Link 4</a>
-</div>
-</div>
-
-<div id="section">
 
    <a style="margin-top:-70px;margin-right:10px;  position:relative"  class="pull-right" href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
   <div class="container">
 
-
+  
  <!-- Logout trial-->
-
+  
 
 
 
@@ -149,7 +92,7 @@ div.tab button.active {
 }
 </style>
 <!--<div class="form-group">
-  <label class="col-md-4 control-label">Select User Type</label>
+  <label class="col-md-4 control-label">Select User Type</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
 <div class="tab">
@@ -163,17 +106,17 @@ div.tab button.active {
   </div>
 </div>-->
 
-<!--  was not working at the time
+<!--  was not working at the time 
 <script>
 function open(type) {
   if (type=='donor'){
 	  window.open("index.html");
-
+	  
   }
 	else if (type=='hospital'){
 		window.open("hospital_register.html")
 	}
-	else
+	else 
 		window.open("bloodbank_register.html");
     evt.currentTarget.className += " active";
 }
@@ -181,11 +124,11 @@ function open(type) {
 -->
 <!-- cpied content over -->
 <div class="form-group">
-  <label class="col-md-4 control-label">User Name</label>
+  <label class="col-md-4 control-label">User Name</label>  
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  class="form-control edit" readonly required name="name" placeholder="Name" class="form-control"  type="text" value=<?php echo $_SESSION['name'];?> />
+  <input  class="form-control edit" readonly required name="name" placeholder="Name" class="form-control"  type="text" value="<?php echo $_SESSION['name'];?>"/>
     </div>
   </div>
 </div>
@@ -199,7 +142,7 @@ function open(type) {
 <script type="text/javascript">
   function minimum()
   {
-
+	  
     var pass=document.getElementById('mobile').value.length;
     if(pass!=10)
 		{
@@ -208,16 +151,16 @@ function open(type) {
 			return false;
 		}
   }
-
-</script>
-
+    
+</script> 
+     
 <div class="form-group">
-  <label class="col-md-4 control-label">Mobile Number</label>
+  <label class="col-md-4 control-label">Mobile Number</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-
-  <input type="number" class="form-control edit" readonly required name="mobile" id="mobile"  onchange="minimum()" value=<?php echo $_SESSION['uname'];?> />
+        
+  <input type="number" class="form-control edit" readonly required name="mobile" id="mobile"  onchange="minimum()" value="<?php echo $_SESSION['mobile'];?>" />
 
     </div>
   </div>
@@ -225,7 +168,7 @@ function open(type) {
 
 <!-- pin input-->
 <div class="form-group">
-  <label class="col-md-4 control-label">Password</label>
+  <label class="col-md-4 control-label">Password</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
@@ -236,14 +179,14 @@ function open(type) {
 
 <!-- Blood Group input-->
 
-<div class="form-group">
+<div class="form-group"> 
   <label class="col-md-4 control-label">Blood Group</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-
+        
     <select name="bloodgroup" class="form-control selectpicker edit" readonly required >
-      <option value=<?php echo $_SESSION['bloodgroup'];?> ><?php echo $_SESSION['bloodgroup'];?> </option>
+      <option value="<?php echo $_SESSION['bloodgroup'];?>" ><?php echo $_SESSION['bloodgroup'];?> </option>
 							  <option value="A+">A+</option>
 					  <option value="A-">A-</option>
 					  <option value="AB+">AB+</option>
@@ -259,14 +202,14 @@ function open(type) {
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="date">Date Of Birth</label>
+  <label class="col-md-4 control-label" for="date">Date Of Birth</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
           <i class="fa fa-calendar">
          </i>
-  <input  type="date" class="form-control edit" readonly required value=<?php echo $_SESSION['dob'];?> name="dob" id="dob" max="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-216 Months',strtotime($d))); ?>" min="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-780 Months',strtotime($d))); ?>">
-
+  <input  type="date" class="form-control edit" readonly required value="<?php echo $_SESSION['dob'];?>" name="dob" id="dob" max="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-216 Months',strtotime($d))); ?>" min="<?php $d=date('Y-m-d'); echo date('Y-m-d',strtotime('-780 Months',strtotime($d))); ?>">
+    
     </div>
   </div>
 </div>
@@ -274,56 +217,36 @@ function open(type) {
 
 <!-- Text input-->
      <!-- address 1-->
-
+      
 <div class="form-group">
-  <label class="col-md-4 control-label">Home Address</label>
+  <label class="col-md-4 control-label">Home Address</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input class="form-control edit" required name="haddress" placeholder="Home Address "  readonly type="text" value= <?php echo $_SESSION['haddress'];?> />
+  <input class="form-control edit" required name="haddress" placeholder="Home Address "  readonly type="text" value= "<?php echo $_SESSION['haddress'];?>" />
     </div>
   </div>
 </div>
 
 
 <div class="form-group">
-  <label class="col-md-4 control-label">Home City</label>
+  <label class="col-md-4 control-label">Work Address</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input class="form-control edit" required name="hcity" readonly  type="text" value= <?php echo $_SESSION['hcity'];?> />
-    </div>
-  </div>
-</div>
-
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Work Address</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="waddress" placeholder="Work Address (optional)" class="form-control edit" readonly type="text" value= <?php echo $_SESSION['waddress'];?> />
+  <input name="waddress" placeholder="Work Address (optional)" class="form-control edit" readonly type="text" value="<?php echo $_SESSION['waddress'];?>" />
     </div>
   </div>
 </div>
 
 
 <!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Working City</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input name="wcity" placeholder="Working City (optional)" class="form-control edit" readonly  type="text" value= <?php echo $_SESSION['wcity'];?> />
-    </div>
-  </div>
-</div>
+ 
 
 
 
 
-<!-- Success message
+<!-- Success message 
 <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thank you for registering with us .</div>
 -->
 <!-- Button -->
@@ -363,7 +286,7 @@ $('#edit').click(function(){
 	if(isset($_POST['update']))
 	{
 		$name = $_POST['name'];
-		$mobile = $_POST['mobile'];
+		$mobile = $_POST['mobile'];	
 		$pin = $_POST['pin'];
 		$bloodgroup = $_POST['bloodgroup'];
 		$dob = $_POST['dob'];
@@ -371,17 +294,17 @@ $('#edit').click(function(){
 		$waddress = $_POST['waddress'];
 		try 
 			{
-				$sql = "update user_details set name='$name', pin='$pin',bloodgroup='$bloodgroup',
-						dob='$dob', haddress='$haddress', waddress='$waddress' where mobile='$mobile'";
+				$sql = "update user_details set name='$name', mobile='$mobile', pin='$pin',bloodgroup='$bloodgroup',
+						dob='$dob', haddress='$haddress', waddress='$waddress',
+					 where mobile='$mobile'";
 				$sql=mysqli_query($conn,$sql);
-
+				
 				echo '<script> alert("Details are updated");  </script>';
 			}
 		catch(PDOException $e)
 			{
 				echo $sql . "<br>" . $e->getMessage();
-				echo '<script> alert("This mobile number already exists");  </script>';
 			}
 }
-
+	
 ?>
