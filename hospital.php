@@ -123,7 +123,7 @@ function open(type) {
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input class="form-control" required name="email" placeholder="E-mail " class="form-control"  type="text">
+  <input class="form-control" required name="email" placeholder="E-mail " class="form-control"  type="email">
     </div>
   </div>
 </div>

@@ -1,5 +1,7 @@
 <?php
-include 'header.php';
+session_start();
+include("connection.php");
+include("header.php");
 ?>
 
 <!DOCTYPE html>
@@ -63,11 +65,12 @@ include 'header.php';
 }
 </style>
 <body>
+   <a style="margin-top:-70px;margin-right:10px;  position:relative"  class="pull-right" href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 
 <h3>Welcome User </h3>
 
 <div class="vertical-menu">
-  <a href="#" class="active">Info</a>
+  <a href="user_info.php" class="active">Info</a>
   <a href="#">Donations</a>
   <a href="#">Donate Now</a>
   <a href="#">Link 3</a>

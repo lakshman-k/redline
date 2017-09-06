@@ -10,12 +10,12 @@ if(isset($_POST['submit']))
 		  $contact2=$_POST['contact2'];
 		$address = $_POST['address'];
 
-	try {
+	try 
+	{
 		include ('geocords.php');
 		$sql = "INSERT INTO hospital_details(hospital_name,pin, h_username,contact1, contact2, address,h_lat,h_lon,email)VALUES('$name',$pin,'$uname','$contact1','$contact2','$address',$latitude,$longitude,'$email')";
-
- $conn->exec($sql);
-   echo "New record created successfully";
+		 $conn->exec($sql);
+		   echo "New record created successfully";
     }
 catch(PDOException $e)
     {
