@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("connection.php");
+include("connection1.php");
 include("header.php");
 
 
@@ -43,7 +43,7 @@ if(!(isset($_SESSION['h_username']))){
 
 
 
-    <form class="well form-horizontal" action="" method="post"  id="contact_form">
+    <form class="well form-horizontal" action="hospital_info.php" method="post"  id="contact_form">
 <fieldset>
 
 <!-- Form Name -->
@@ -128,7 +128,7 @@ function open(type) {
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  class="form-control edit" readonly required name="name" placeholder="Hospital Name" class="form-control"  type="text" value="<?php echo $_SESSION['hospital_name'];?>"/>
+  <input  class="form-control edit" readonly required name="hospital_name" placeholder="Hospital Name" class="form-control"  type="text" value="<?php echo $_SESSION['hospital_name'];?>"/>
     </div>
   </div>
 </div>
@@ -138,7 +138,7 @@ function open(type) {
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  class="form-control edit" readonly required name="name" placeholder="Hospital Name" class="form-control"  type="text" value="<?php echo $_SESSION['email'];?>"/>
+  <input  class="form-control edit" readonly required name="email" placeholder="Hospital Name" class="form-control"  type="text" value="<?php echo $_SESSION['email'];?>"/>
     </div>
   </div>
 </div>
@@ -166,7 +166,7 @@ function open(type) {
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
         
-  <input type="number" class="form-control edit" readonly required name="mobile" id="mobile"  onchange="minimum()" placeholder="Enter contact number" value="<?php echo $_SESSION['contact1'];?>" />
+  <input type="number" class="form-control edit" readonly required name="contact1" id="contact1"  onchange="minimum()" placeholder="Enter contact number" value="<?php echo $_SESSION['contact1'];?>" />
 
     </div>
   </div>
@@ -178,7 +178,7 @@ function open(type) {
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
         
-  <input type="number" class="form-control edit" readonly name="mobile" id="mobile"  onchange="minimum()" placeholder="Enter contact number(optional)" value="<?php echo $_SESSION['contact2'];?>" />
+  <input type="number" class="form-control edit" readonly name="contact2" id="mobile"  onchange="minimum()" placeholder="Enter contact number(optional)" value="<?php echo $_SESSION['contact2'];?>" />
 
     </div>
   </div>
@@ -189,7 +189,7 @@ function open(type) {
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  class="form-control edit" readonly required name="name" placeholder="Hospital Name" class="form-control"  type="text" value="<?php echo $_SESSION['h_username'];?>"/>
+  <input  class="form-control edit" readonly required name="h_username" placeholder="Hospital Name" class="form-control"  type="text" value="<?php echo $_SESSION['h_username'];?>"/>
     </div>
   </div>
 </div>
@@ -214,7 +214,7 @@ function open(type) {
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input class="form-control edit" required name="haddress" placeholder="Home Address "  readonly type="text" value= "<?php echo $_SESSION['address'];?>" />
+  <input class="form-control edit" required name="address" placeholder="Home Address "  readonly type="text" value= "<?php echo $_SESSION['address'];?>" />
     </div>
   </div>
 </div>
@@ -265,31 +265,52 @@ $('#edit').click(function(){
 <?php
 	if(isset($_POST['update']))
 	{
-		$h_username = $_SESSION['h_username'];
-		$hospital_name = $_SESSION['hospital_name'];	
-		$pin = $_SESSION['pin'];
-		$email = $_SESSION['email'];
-		$contact1 = $_SESSION['contact1'];
-		$contact2 = $_SESSION['contact2'];
-		$address = $_SESSION['address'];
+		echo "adf";
 		
-		try 
+		$h_username = $_SESSION['h_username'];
+		$hospital_name = $_POST['hospital_name'];	
+		$pin = $_POST['pin'];
+		$email = $_POST['email'];
+		$contact1 = $_POST['contact1'];
+		$contact2 = $_POST['contact2'];
+		$address = $_POST['address'];
+		$sql = "update hospital_details set hospital_name='$hospital_name', pin='$pin',
+						contact1='$contact1',contact2='$contact2', email='$email',address='$address'
+						where h_username='$h_username'";
+		//$conn1->qurey($sql);
+		$sql=mysqli_query($conn1,$sql);			
+	}
+
+/*		try 
 			{
+			
 				/*$sql = "update hospital_details set hospital_name='$hospital_name', pin='$pin',
 						contact1='$contact1',contact2='$contact2', email='$email',address='$address',
-						where h_username='$h_username'";
-				//$conn->exec($sql);*/
+						where h_username='forti'";*/
+				//$sql = "update hospital_details set ('hospital_name'='$hospital_name', 'pin'='$pin', 'contact1'='$contact1','contact2'='$contact2','email'='$email','address'='$address') where h_username='forti'";
+				//$conn->exec($sql);
 				
-				$sql = "update hospital_details set hospital_name=?, pin=?, contact1=?,contact2=?, email=?,address=?, where h_username=?";
-				$result = $conn->prepare($sql);
-				$result->execute(array($hospital_name,$pin,$contact1,$contact2,$email,$address));
+		/*$result = $conn->prepare("UPDATE hospital_details SET 'hospital_name'=:hospital_name, 'pin'=:pin, 'contact1'=:contact1,
+		'contact2'=:contact2, 'email'=:email,'address'=:address WHERE 'h_username'=:h_username");*/
+//				$stmt = $conn->prepare($sql);
+			//	$stmt->bindParam(':hospital_name', $hospital_name, PDO::PARAM_STR);       
+				//$stmt->bindParam(':pin', $_POST['$pin'], PDO::PARAM_STR);    
+				//$stmt->bindParam(':contact1', $_POST['contact1'], PDO::PARAM_STR);
+				// use PARAM_STR although a number  
+			///	$stmt->bindParam(':contact2', $_POST['contact2'], PDO::PARAM_STR); 
+				//$stmt->bindParam(':email', $_POST['email'], PDO::PARAM_STR);   
+			//	$stmt->bindParam(':address', $_POST['address'], PDO::PARAM_INT);   
+			//	$stmt->bindParam(':h_username', $_POST['h_username'], PDO::PARAM_INT); 
+				//$stmt->execute();  
+			//	$result = $conn->prepare($sql);
+			/*$qr =	$result->execute(array($hospital_name,$pin,$contact1,$contact2,$email,$address,$h_username));
 		  		
-				echo '<script> alert("Details are updated");  </script>';
+
 			}
 		catch(PDOException $e)
 			{
-				echo $sql . "<br>" . $e->getMessage();
+				echo   $e->getMessage();
 			}
 }
-	
+	*/
 ?>

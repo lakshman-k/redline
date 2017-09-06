@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("connection.php");
+include("connection1.php");
 include("header.php");
 
 
@@ -285,6 +285,7 @@ $('#edit').click(function(){
 <?php
 	if(isset($_POST['update']))
 	{
+	
 		$name = $_POST['name'];
 		$mobile = $_POST['mobile'];	
 		$pin = $_POST['pin'];
@@ -294,10 +295,17 @@ $('#edit').click(function(){
 		$waddress = $_POST['waddress'];
 		try 
 			{
-				$sql = "update user_details set name='$name', mobile='$mobile', pin='$pin',bloodgroup='$bloodgroup',
-						dob='$dob', haddress='$haddress', waddress='$waddress',
-					 where mobile='$mobile'";
-				$sql=mysqli_query($conn,$sql);
+				$sql = "update user_details set name='$name', mobile='$mobile', pin='$pin',
+						bloodgroup='$bloodgroup',
+						dob='$dob', haddress='$haddress', waddress='$waddress'  where mobile='$mobile'";
+				$sql=mysqli_query($conn1,$sql);
+				$_SESSION['name']=$name;
+				$_SESSION['mobile']=$mobile;
+				$_SESSION['pin']=$pin ;
+				$_SESSION['bloodgroup']=$bloodgroup;
+				$_SESSION['dob']=$dob;
+				$_SESSION['haddress']=$haddress;
+				$_SESSION['waddress']=$waddress;
 				
 				echo '<script> alert("Details are updated");  </script>';
 			}
