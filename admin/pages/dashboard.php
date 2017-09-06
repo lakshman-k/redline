@@ -14,7 +14,7 @@ $count1=mysqli_num_rows($result1);
 
 $query2="select * from bloodbank_details";
 $result2=mysqli_query($conn,$query2);
-$count2=mysqli_num_rows($result2);
+//$count2=mysqli_num_rows($result2);
 
 if(!(isset($_SESSION['uname']))){
     echo '<script> alert("session expired please login to continue!!");  

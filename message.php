@@ -1,23 +1,25 @@
 <?php
-include("connection.php");
+include("connection1.php");
 //if(isset($_POST['submit']))
 {
 	$p_name = $_POST['p_name'];
     $p_id = $_POST['P_id'];
-    $p_contact= $_POST['p_contact']
+    $p_contact= $_POST['p_contact'];
     //$pin = $_POST['pin'];
     $bloodgroup = $_POST['bloodgroup'];
   //  $dob = $_POST['dob'];
 	// $haddress = $_POST['haddress'];
 	// $waddress = $_POST['waddress'];
 
-  	$sql= "SELECT * FROM hospital_details WHERE h_username='$uname';
+  	$sql= "SELECT * FROM hospital_details WHERE h_username='454';
     $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 while($rows=mysqli_fetch_array($result))
   {
-    $h_lat=$rows['h_lat'];
+
+
+  echo   $h_lat=$rows['h_lat'];
     $h_lon=$rows['h_lon'];
     $H_name=$rows['hospital_name'];
 
@@ -29,7 +31,24 @@ while($rows=mysqli_fetch_array($result))
 
 }
 
-$h_lat =h_lat+0.000001;
+$h_latp =$h_lat+0.000001;
+$h_latn =$h_lat-0.000001;
+
+$h_lonp =$h_lon+0.000001;
+$h_latn =$h_lat-0.000001;
+
+$sql= "select mobile from user_details where bloodgroup='$bloodgroup' and lat between $latp and $latn";
+if ($result->num_rows > 0) {
+while($rows=mysqli_fetch_array($result))
+  {
+		echo $rows['mobile'];
+  }
+
+}
+
+
+
+
 
 $ch = curl_init();
 $user="lakshman.k@mca.christuniversity.in:123456";

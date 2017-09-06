@@ -205,11 +205,11 @@ if(!(isset($_SESSION['uname']))){
 								//$pin= $fetchFromTable['pin'];
 								$bloodgroup= $fetchFromTable['bloodgroup'];
 								$dob=$fetchFromTable['dob'];	
-								$city=$fetchFromTable['hcity'];	
+								$haddress=$fetchFromTable['haddress'];	
 										
 					 ?>
          <tr>
-        <td><?php echo $mobile; ?></td> <td><?php echo $name; ?></td><td><?php echo $bloodgroup; ?></td><td><?php echo $dob; ?></td></td><td><?php echo $city; ?></td>
+        <td><?php echo $mobile; ?></td> <td><?php echo $name; ?></td><td><?php echo $bloodgroup; ?></td><td><?php echo $dob; ?></td></td><td><?php echo $haddress; ?></td>
           </tr>
  <?php } ?>     
     	

@@ -1,11 +1,11 @@
 <?php
 session_start();
-include("connection.php");
+include("connection1.php");
 include("header.php");
 
 
 if(!(isset($_SESSION['h_username']))){
-    echo '<script> alert("session expired please login to continue!!");  
+    echo '<script> alert("session expired please login to continue!!");
     window.location="../login.php";
     </script>';
 }
@@ -285,9 +285,10 @@ $('#edit').click(function(){
 <?php
 
 
-				
+
 	if(isset($_POST['update']))
 	{
+    
 		$h_username = $_POST['h_username'];
 		$pin = $_POST['pin'];
 		$hospital_name = $_POST['hospital_name'];
@@ -296,26 +297,26 @@ $('#edit').click(function(){
 		$contact2=$_POST['contact2'];
 		$address = $_POST['address'];
 		echo $h_username;
-		try 
+		try
 			{
 				$sql = "update hospital_details set hospital_name='$hospital_name', pin='$pin',contact1='$contact1 ', contact2='$contact1', email='$email', address='$address' where h_username='$h_username'";
-				$sql=mysqli_query($conn,$sql);
-				
+				$sql=mysqli_query($conn1,$sql);
+
 				/*echo $hospital_name;
 				echo $h_username;
 				echo $pin;
 				echo $contact1;
 				echo $contact2;
 				echo $address;*/
-				
+
 				echo '<script> alert("Details are updated");  </script>';
 			}
 		catch(PDOException $e)
 			{
 				echo '<script> alert("This mobile number already exists");  </script>';
 				echo $sql . "<br>" . $e->getMessage();
-				
+
 			}
 }
-	
+
 ?>
